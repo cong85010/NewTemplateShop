@@ -125,6 +125,9 @@ background: linear-gradient(0deg, rgba(145,144,144,1) 0%, rgba(255,255,255,1) 10
     position: relative;
     overflow: hidden;
 }
+#slider-holder img{
+  border-radius: 15px;
+}
 #slider-holder ul {
     width: 980px;
     height: 418px;
@@ -286,11 +289,11 @@ background: linear-gradient(0deg, rgba(145,144,144,1) 0%, rgba(255,255,255,1) 10
     float: left;
     height: 36px;
     background: url(../images/tab.gif) no-repeat 0 -37px;
-    padding: 0 0 0 20px;
+    border-radius: 15px 0 0 0;
 }
 .tabs ul li a span {
     background-position: right -37px;
-    padding: 0 20px 0 0;
+    padding: 0 20px;
 }
 .tabs ul li a {
     position: relative;
