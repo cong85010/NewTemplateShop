@@ -25,17 +25,17 @@
                                                 
                                                 <a href="{{ URL::to('/chi-tiet-san-pham/'.$product->product_id) }}" title="">
                                                 <img src="{{ URL::to('public/uploads/product/'.$product->product_image) }}" alt="" height="200" />
-                              {{--              {{-- <form action="{{ URL::to('/save-cart') }}" method="post">
+                              {{--   <form action="{{ URL::to('/save-cart') }}" method="post">
                                                     {{ csrf_field() }} --}}
                                                         <span class="product_Infor">
-                                                            <p>Tên: <b style="display: block;text-overflow: ellipsis;">{{($product->product_name) }}</b></p>
+                                                            <p style="height: 50px;">Tên: <b style="text-overflow: ellipsis;">{{($product->product_name) }}</b></p>
                                                             <p>Tồn kho: {{($product->product_qty) }}</p>
                                                             <?php
                                                                 if($product->product_qty != '0'){
                                                             ?>
                                                             <input name="productid_hidden" type="hidden" value="{{ $product->product_id }}" />
                                                             <input name="qty" type="hidden" min="1" value="1" />
-                                                        </a>
+                                                            </a>
                                                             <h3 style="color: indianred; text-align: start;">Giá: {{ number_format($product->product_price) }} VND</h3>
                                                             {{-- <button type="submit"  class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button> --}}
                                                             <button type="button" name="add-to-cart" class="btn btn-default add-to-cart" data-id_product="{{ $product->product_id }}">Thêm giỏ hàng</button>

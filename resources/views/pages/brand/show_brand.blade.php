@@ -26,14 +26,12 @@
                                 <form>
                                     <div id="slider-range"> </div>  
                                         <div clas="style-range" style="width: 372px">
-                                             <input type="text" id="amount_start" readonly style="border:0; color:#f6931f; font-weight:bold; width: 120px">
+                                             <input  type="text" id="amount_start" readonly style="border:0; color:#f6931f; font-weight:bold; width: 120px">
                                              <input  type="text" id="amount_end" readonly style="border:0; color:#f6931f; font-weight:bold;">
                                         </div>
                                      <input type="hidden" name="start_price" id="start_price">
                                      <input type="hidden" name="end_price" id="end_price">
-                                     {{-- <input type="hidden" name="fillter_price" value="true"> --}}
                                      <input type="submit" name="filter_price" value="Lọc giá" class="btn btn-sm btn-default">
-                                     {{-- <button type="submit">Lọc giá</button> --}}
                                 </form>
                             </div>
                         </div>
@@ -41,7 +39,7 @@
 
                          @foreach($brand_by_id as $key => $product)
                         {{-- <a href="{{ URL::to('/chi-tiet-san-pham/'.$product->product_id) }}" title=""> --}}
-                            <div class="col-sm-4">
+                            <div class="col-sm-4" style="margin-top: 20px;">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                             <div class="productinfo text-center">
@@ -61,9 +59,8 @@
                                                 <img src="{{ URL::to('public/uploads/product/'.$product->product_image) }}" alt="" height="200" />
                               {{--   <form action="{{ URL::to('/save-cart') }}" method="post">
                                                     {{ csrf_field() }} --}}
-                                                        <span>
-                                                            <h2>{{ number_format($product->product_price) }} VND</h2>
-                                                            <p><b>{{($product->product_name) }}</b></p>
+                                                    <span class="product_Infor">
+                                                            <p style="height: 50px;">Tên: <b style="text-overflow: ellipsis;">{{($product->product_name) }}</b></p>
                                                             <p>Tồn kho: {{($product->product_qty) }}</p>
                                                             <?php
                                                                 if($product->product_qty != '0'){
@@ -71,8 +68,9 @@
                                                             <input name="productid_hidden" type="hidden" value="{{ $product->product_id }}" />
                                                             <input name="qty" type="hidden" min="1" value="1" />
                                                             </a>
+                                                            <h3 style="color: indianred; text-align: start;">Giá: {{ number_format($product->product_price) }} VND</h3>
                                                             {{-- <button type="submit"  class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ hàng</button> --}}
-                                                            <button type="button" name="add-to-cart" class="btn btn-default add-to-cart" data-id_product="{{ $product->product_id }}">Thêm giỏ hàng</button> 
+                                                            <button type="button" name="add-to-cart" class="btn btn-default add-to-cart" data-id_product="{{ $product->product_id }}">Thêm giỏ hàng</button>
                                                             <?php 
                                                         }else{
                                                             ?>
@@ -84,12 +82,6 @@
                                                     {{-- </form> --}}</form>
                                                 </a>
                                                 </div>
-                                    </div>
-                                    <div class="choose">
-                                        <ul class="nav nav-pills nav-justified">
-                                            <li><a href="#"><i class="fa fa-plus-square"></i>Yêu thích</a></li>
-                                            <li><a href="#"><i class="fa fa-plus-square"></i>So sánh</a></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>

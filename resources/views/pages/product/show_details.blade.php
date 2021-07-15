@@ -1,7 +1,7 @@
  @extends('welcome')
  @section('content')
  @foreach($details_product as $key => $value)
-<div class="product-details"><!--product-details-->
+<div class="product-details_PRO"><!--product-details-->
 	<style type="text/css" media="screen">
 		.lSSlideOuter .lSPager.lSGallery img {
 		    display: block;
@@ -13,12 +13,13 @@
 		    color: #FE980F;
 		}
 	</style>	
-						<div class="col-sm-5">
-							<ul id="imageGallery">
+						<div class="col-sm-5 style-11" style="max-height: 1000px; overflow-y: auto;">
+							<ul>
 								@foreach($gallery as $key => $gal)
-							  <li data-thumb="{{ asset('public/uploads/gallery/'.$gal->gallery_image) }}" data-src="{{ asset('public/uploads/gallery/'.$gal->gallery_image) }}">
-							    <img width="100%" src="{{ asset('public/uploads/gallery/'.$gal->gallery_image) }}" />
-							  </li>
+								<li>
+								<img width="100%" src="{{ asset('public/uploads/gallery/'.$gal->gallery_image) }}" />
+
+								</li>
 							  	@endforeach
 							</ul>
 
@@ -77,14 +78,14 @@
 					</div><!--/product-details-->
 
 
-				<div class="category-tab shop-details-tab"><!--category-tab-->
+				<div class="category-tab shop-details-tab style-11"><!--category-tab-->
 						<div class="col-sm-6" style="border-right: 1px solid #cfcfcf;">
 							<h4 style="font-size: 20px;">Thông tin thương hiệu</h4>
-							<p style="font-size: 13px;">{!! $value->product_content !!}</p>
+							<p style="font-size: 15px;">{!! $value->product_content !!}</p>
 						</div>
 						<div class="col-sm-6">
 							<h4 style="font-size: 20px;">Đánh giá</h4>
-							<p style="font-size: 13px;">{!! $value->brand_desc !!}</p>
+							<p style="line-height: 30px;font-size: 15px;">{!! $value->brand_desc !!}</p>
 						</div>
 				</div><!--/category-tab-->
 

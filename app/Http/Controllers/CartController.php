@@ -193,7 +193,7 @@ class CartController extends Controller
                         $cart[$session]['product_quantity'] = $qty;
 
 
-                        $message.='<p style="color:green">'.$i.') Cập nhật số lượng '.$cart[$session]['product_name'].' Thành công</p>';
+                        $message.='<p style="color:green; font-size: 14px">'.$i.') Cập nhật số lượng '.$cart[$session]['product_name'].' Thành công</p>';
 
                     }elseif($val['session_id'] == $key && $qty > $cart[$session]['product_qty']){
 

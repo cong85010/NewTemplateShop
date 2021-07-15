@@ -6,7 +6,7 @@
 body {
     background: #fff;
     font-family: Arial, sans-serif;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 17px;
     color: #6f6e6e;
 }
@@ -34,16 +34,6 @@ a:hover {
     color: #333;
 }
 
-.left,
-.alignleft {
-    float: left;
-    display: inline;
-}
-.right,
-.alignright {
-    float: right;
-    display: inline;
-}
 
 .cl {
     font-size: 0;
@@ -99,11 +89,14 @@ h1#logo {
     margin-right: 0;
 }
 #navigation ul li a {
-    color: #fff;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
 }
+
 #navigation ul li a:hover,
 #navigation ul li a.active {
-    color: #ffd900;
+    color: #890000 !important;
 }
 
 .shell {
@@ -113,7 +106,8 @@ h1#logo {
 
 #top {
     height: 500px;
-    background: #000;
+    background: rgb(145,144,144);
+background: linear-gradient(0deg, rgba(145,144,144,1) 0%, rgba(255,255,255,1) 100%);
 }
 #header {
     height: 61px;
@@ -185,10 +179,12 @@ h1#logo {
     height: 47px;
     white-space: nowrap;
     padding-top: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .options .search {
     float: left;
-    padding: 6px 0 0 0;
     background: url(../images/border.gif) repeat-y right 0;
     height: 33px;
     margin-right: 12px;
@@ -320,9 +316,12 @@ h1#logo {
     background-position: right 0;
 }
 .product-image-wrapper{
-	border: 1px dashed black;
+	border: 1px solid #cfcfcf;
 	padding: 20px;
 	margin:  0;
+}
+.product-image-wrapper:hover {
+    box-shadow: 0 0 5px 0 #979797;
 }
 .product_Infor p{
 	text-align: start !important;
@@ -395,7 +394,7 @@ h1#logo {
 .tab-content {
     display: none;
 }
-
+/* 
 .tabbed {
     min-height: 420px;
-}
+} */

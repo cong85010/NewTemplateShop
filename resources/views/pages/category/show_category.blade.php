@@ -30,7 +30,7 @@
                               {{--   <form action="{{ URL::to('/save-cart') }}" method="post">
                                                     {{ csrf_field() }} --}}
                                                         <span class="product_Infor">
-                                                            <p>Tên: <b style="display: block;text-overflow: ellipsis;">{{($product->product_name) }}</b></p>
+                                                            <p style="height: 50px;">Tên: <b style="text-overflow: ellipsis;">{{($product->product_name) }}</b></p>
                                                             <p>Tồn kho: {{($product->product_qty) }}</p>
                                                             <?php
                                                                 if($product->product_qty != '0'){

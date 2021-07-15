@@ -186,12 +186,12 @@
            
             
             <td ></td>
-            <td style="color: red">Tổng tiền: {{ number_format($total_coupon,0,',','.') }} VNĐ</td>
+            <td style="color: red; font-weight: bold;">Tổng tiền: {{ number_format($total_coupon,0,',','.') }} VNĐ</td>
           </tr>
 
         </tbody>
       </table>
-      <a href="{{ url('/print-order/'.$details->order_code) }}" target="blank">In đơn hàng</a>
+      <a style="font-size: 16x; color: blue;" href="{{ url('/print-order/'.$details->order_code) }}" target="blank"><i class="fa fa-print" aria-hidden="true"></i> In đơn hàng</a>
     </div>
    
   </div>

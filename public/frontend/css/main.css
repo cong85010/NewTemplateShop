@@ -1080,7 +1080,7 @@ h2.title {
 *******Product Details CSS******
 **************************/
 
-.product-details {
+.product-details_PRO {
     overflow: hidden;
 }
 
@@ -1093,7 +1093,7 @@ h2.title {
     padding-right: 25px;
 }
 
-.product-details {
+.product-details_PRO {
     margin-bottom: 40px;
     overflow: hidden;
     margin-top: 10px;
@@ -1222,13 +1222,18 @@ h2.title {
     margin-bottom: 10px;
     margin-left: 20px;
 }
-
+.style-11::-webkit-scrollbar {
+    width: 10px;
+    background-color: #e9e9e9;
+  }
 .shop-details-tab {
     border: 1px solid #f7f7f0;
     margin-bottom: 75px;
     margin-left: 15px;
     margin-right: 15px;
     padding-bottom: 10px;
+    height: 400px;
+    overflow-y: auto;
 }
 .shop-details-tab .col-sm-12 {
     padding-left: 0;
@@ -1451,6 +1456,7 @@ h2.title {
 
 .breadcrumbs {
     position: relative;
+    font-size: 17px;
 }
 
 .breadcrumbs .breadcrumb {
@@ -1459,7 +1465,7 @@ h2.title {
     padding-left: 0;
 }
 
-.breadcrumbs .breadcrumb li a {
+.breadcrumbs .breadcrumb > li > a {
     background: #fe980f;
     color: #ffffff;
     padding: 3px 7px;
@@ -1473,14 +1479,297 @@ h2.title {
     border-style: solid;
     border-color: transparent transparent transparent #fe980f;
     position: absolute;
-    top: 11px;
-    left: 48px;
+    top: 8px;
+    left: 65px;
 }
 
 .breadcrumbs .breadcrumb > li + li:before {
     content: " ";
 }
 
+.basket-labels,
+.basket-product {
+  width: 100%;
+}
+.basket-labels ul {
+   display: flex;
+}
+.basket-labels ul li{
+    font-size: 16px;
+}
+
+.basket,
+.basket-labels,
+.basket-product .item,
+.price,
+.quantity,
+.subtotal,
+.basket-product,
+.product-image,
+.product-details {
+  float: left;
+}
+
+.main-basket {
+    clear: both;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 1rem 0;
+    width: 100%;
+}
+.basket,
+aside {
+  padding: 0 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.basket {
+    width: 70%;
+}
+.main-basket label {
+    display: block;
+    margin-bottom: 5px;
+}
+.promo-code-field {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-transform: uppercase;
+    transition: all 0.2s linear;
+    width: 48%;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  }
+  
+  .promo-code-field:hover,
+  .promo-code-field:focus {
+    border: 1px solid #999;
+  }
+  
+  .promo-code-cta {
+    border-radius: 4px;
+    font-size: 0.625rem;
+    margin-left: 0.625rem;
+    padding: 0.6875rem 1.25rem 0.625rem;
+  }
+  
+  .basket-labels {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    height: 30px;
+    line-height: 30px;
+  }
+ .main-basket > li {
+    color: #111;
+    display: inline-block;
+    padding: 0.625rem 0;
+  }  
+.main-basket > li.price:before,
+.main-basket > li.subtotal:before {
+  content: '';
+}
+.basket__item {
+    width: 55%;
+  }
+  
+  .price,
+  .quantity,
+  .subtotal {
+    width: 15%;
+    font-size: 18px;
+  }
+  
+  .subtotal {
+    text-align: right;
+  }
+  
+  .remove {
+    bottom: 1.125rem;
+    float: right;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    width: 45%;
+  }
+  
+  .remove button {
+    background-color: transparent;
+    color: #777;
+    float: none;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+  
+
+  .basket-product {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+    position: relative;
+  }
+  
+  .product-image {
+    width: 35%;
+  }
+  
+  .product-details {
+    width: 65%;
+    margin-top: 0;
+  }
+  .product-details h5{
+    margin-top: 0;
+  }
+  .product-frame {
+    border: 1px solid #aaa;
+  }
+  
+  .product-details {
+    padding: 0 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .product-details strong {
+      font-size: 13px;
+  }
+  .quantity-field {
+    background-color: #ccc;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 2px;
+    width: 50%;
+  }
+  .alert-success {
+      font-size: 15px;
+  }
+  aside {
+    float: right;
+    position: relative;
+    width: 30%;
+  }
+  
+  .summary {
+    background-color: #eee;
+    border: 1px solid #aaa;
+    padding: 1rem;
+    width: 250px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .summary-total-items {
+    color: #666;
+    font-size:18px;
+    text-align: center;
+  }
+  
+  .summary-subtotal,
+  .summary-total {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    clear: both;
+    margin: 1rem 0;
+    overflow: hidden;
+    padding: 0.5rem 0;
+  }
+  
+  .subtotal-title,
+  .subtotal-value,
+  .total-title,
+  .total-value,
+  .promo-title,
+  .promo-value {
+    color: #111;
+    float: left;
+    width: 50%;
+    font-size: 15px;
+  }
+  
+  .summary-promo {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+  }
+  
+  .promo-title {
+    float: left;
+    width: 70%;
+  }
+  
+  .promo-value {
+    color: #8B0000;
+    float: left;
+    text-align: right;
+    width: 30%;
+  }
+  .final-value-price {
+      font-size: 16px;
+      color: black;
+      font-weight: bold;
+  }
+  .summary-delivery {
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  
+  .subtotal-value,
+  .total-value {
+    text-align: right;
+  }
+  
+  .total-title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .summary-checkout {
+    display: block;
+  }
+  
+  .checkout-cta {
+    display: block;
+    float: none;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0.625rem 0;
+    width: 100%;
+    justify-content: ;
+  }
+  .basket-voucher * {
+  background: transparent;
+  color: black;
+}
+  .flex-between {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0;
+  }
+  .checkout-cta a {
+      color: black;
+  }
+  .basket-voucher {
+      float: left;
+      width: 70%;
+  }
+ 
+  .summary-delivery-selection {
+    background-color: #ccc;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    display: block;
+    font-size: 0.625rem;
+    height: 34px;
+    width: 100%;
+  }
+#cart_items {
+    padding-right: 25px;
+}
 #cart_items .cart_info {
     border: 1px solid #e6e4df;
     margin-bottom: 50px;
@@ -1663,13 +1952,14 @@ h2.title {
 .user_info input,
 select,
 textarea {
-    background: #f0f0e9;
+    background: white;
     border: 0;
-    color: #696763;
+    color: #000000;
     padding: 5px;
     width: 100%;
     border-radius: 0;
     resize: none;
+    border: 1px solid #d6d6d0;
 }
 
 .user_info select:focus {
@@ -1799,13 +2089,24 @@ textarea {
     float: left;
     width: 47%;
 }
-
+.form-one {
+    width: 100%;
+}
+.form-one * {
+    margin-top: 10px;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 20px !important;
+}
+.form-one *:focus {
+    box-shadow: 0 0 5px 0 rgb(0, 174, 255);
+}
 .shopper-info > form > input,
 .form-two > form > select,
 .form-two > form > input,
 .form-one > form > input {
-    background: #f0f0e9;
-    border: 0 none;
+    background: white;
+    border: 1px solid #d6d6d0;
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
@@ -1821,7 +2122,7 @@ textarea {
 }
 
 .order-message textarea {
-    font-size: 12px;
+    font-size: 16px;
     height: 335px;
     margin-bottom: 20px;
     padding: 15px 20px;
@@ -1829,14 +2130,14 @@ textarea {
 
 .order-message label {
     font-weight: 300;
-    color: #696763;
+    color: black;
     font-family: "Roboto", sans-serif;
     margin-left: 10px;
     font-size: 14px;
 }
 
 .review-payment h2 {
-    color: #696763;
+    color: black;
     font-size: 20px;
     font-weight: 300;
     margin-top: 45px;
@@ -2226,7 +2527,7 @@ textarea {
 
 .replay-box form input {
     border: 1px solid #f7f7f0;
-    color: #adb2b2;
+    color: #000000;
     font-size: 12px;
     margin-bottom: 22px;
     padding: 8px;
@@ -2243,15 +2544,16 @@ textarea {
 }
 
 .text-area textarea {
-    background: transparent;
+    background: white;
     border: 1px solid#F7F7F0;
 }
 
 .btn.btn-primary {
-    background: #fe980f;
-    border: 0 none;
+    background:transparent;
+    border: 1px solid#8d8d8d;
     border-radius: 0;
     margin-top: 16px;
+    color: black;
 }
 
 .blank-arrow {

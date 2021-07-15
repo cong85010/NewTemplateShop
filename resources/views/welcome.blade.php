@@ -17,6 +17,7 @@
     <link href="{{asset('public/frontend/css/sweetalert.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/lightgallery.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/prettify.css')}}" rel="stylesheet">
+    <link href="{{asset('public/frontend/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/style_template.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="{{asset('public/frontend/css/main_new.css')}}" rel="stylesheet">
@@ -273,189 +274,227 @@
                         </div>
                         <!-- End Third Tab Content -->
                     </div>
-                    <!-- Footer -->
-                    <div id="footer">
-                        <div class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </div>
-                        <div class="right"> &copy; Sitename.com. Design by <a href="http://chocotemplates.com">ChocoTemplates.com</a> </div>
-                    </div>
-                    <!-- End Footer -->
+    <!-- Footer ================================================================== -->
+
                 </div>
                 <!-- End Container -->
             </div>
             <!-- End Content -->
         </div>
     </div>
-    
+    <div  id="footerSection">
+	<div class="container">
+		<div class="row">
+			<div class="span3">
+				<h5>ACCOUNT</h5>
+				<a href="login.html">YOUR ACCOUNT</a>
+				<a href="login.html">PERSONAL INFORMATION</a> 
+				<a href="login.html">ADDRESSES</a> 
+				<a href="login.html">DISCOUNT</a>  
+				<a href="login.html">ORDER HISTORY</a>
+			 </div>
+			<div class="span3">
+				<h5>INFORMATION</h5>
+				<a href="contact.html">CONTACT</a>  
+				<a href="register.html">REGISTRATION</a>  
+				<a href="legal_notice.html">LEGAL NOTICE</a>  
+				<a href="tac.html">TERMS AND CONDITIONS</a> 
+				<a href="faq.html">FAQ</a>
+			 </div>
+			<div class="span3">
+				<h5>OUR OFFERS</h5>
+				<a href="#">NEW PRODUCTS</a> 
+				<a href="#">TOP SELLERS</a>  
+				<a href="special_offer.html">SPECIAL OFFERS</a>  
+				<a href="#">MANUFACTURERS</a> 
+				<a href="#">SUPPLIERS</a> 
+			 </div>
+			<div style="margin-top: -160px;" id="socialMedia" class="span3 pull-right">
+				<h5>SOCIAL MEDIA </h5>
+				<a href="#"><img width="60" height="60" src="{{ URL::to('/public/frontend/images/facebook.png')}}" title="facebook" alt="facebook"/></a>
+				<a href="#"><img width="60" height="60" src="{{ URL::to('/public/frontend/images/twitter.png') }}" title="twitter" alt="twitter"/></a>
+				<a href="#"><img width="60" height="60" src="{{ URL::to('/public/frontend/images/youtube.png') }}" title="youtube" alt="youtube"/></a>
+			 </div> 
+		 </div>
+		<p class="pull-right">&copy; Bootshop</p>
+	</div><!-- Container End -->
+	</div>
 
     <script src="{{ asset('public/frontend/js/jquery.js') }}"></script>
     <script src="{{ asset('public/frontend/js/bootstrap.min.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ asset('public/frontend/js/jquery_sp.js') }}"></script>
     <script src="{{ asset('public/frontend/js/jquery.scrollUp.min.js') }}"></script>
-    <script src="{{ asset('public/frontend/js/price-range.js') }}"></script>
     <script src="{{ asset('public/frontend/js/jquery.prettyPhoto.js') }}"></script>
     <script src="{{ asset('public/frontend/js/main.js') }}"></script>
+    <script src="{{ asset('public/frontend/js/newmain.js') }}"></script>
     <script src="{{ asset('public/frontend/js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('public/frontend/js/lightgallery-all.min.js') }}"></script>
+    <script src="{{ asset('public/frontend/js/lightslider.js') }}"></script>
     <script src="{{ asset('public/frontend/js/simple.money.format.js') }}"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{ asset('public/frontend/js/jquery-1.4.1.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/frontend/js/jquery.jcarousel.pack.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/frontend/js/jquery.slide.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/frontend/js/jquery-func.js') }}" type="text/javascript"></script>
-
-
     <script>
         $(document).ready(function() {
-            $('#sort').change(function() {
-                var url = $(this).val();
-                // alert(url);
-                if (url) {
-                    window.location = url;
-                }
-                return false;
+            
+            $( "#slider-range" ).slider({
+              orientation: "horizontal",
+              range: true,
+              min:{{ $min_price }},
+              max:{{ $max_price_range }},
+              step: 50000,
+              values: [ {{ $min_price }}, {{ $max_price }} ],
+              slide: function( event, ui ) {
+
+                $( "#amount_start" ).val( ui.values[ 0 ]).simpleMoneyFormat();
+                $( "#amount_end" ).val( ui.values[ 1 ]).simpleMoneyFormat();
+                
+                $( "#start_price" ).val( ui.values[ 0 ]);
+                $( "#end_price" ).val( ui.values[ 1 ]);
+            }
+            });
+    $( "#amount_start" ).val( $( "#slider-range" ).slider( "values", 0 )).simpleMoneyFormat(); 
+
+    $( "#amount_end" ).val( $( "#slider-range" ).slider( "values", 1 )).simpleMoneyFormat(); 
+        });
+    </script> 
+    <script>
+        $(document).ready(function() {
+            $('#sort').change( function() {
+                    var url = $(this).val();
+                    // alert(url);
+                    if(url){
+                        window.location=url;
+                    }
+                    return false;
             });
         });
-    </script>
-<!-- 
+    </script>               
+
     <script>
-        $(document).ready(function() {
+         $(document).ready(function() {
             $('#imageGallery').lightSlider({
-                gallery: true,
-                item: 1,
-                loop: true,
-                thumbItem: 3,
-                slideMargin: 0,
+                gallery:true,
+                item:1,
+                loop:true,
+                thumbItem:3,
+                slideMargin:0,
                 enableDrag: false,
-                currentPagerPosition: 'left',
+                currentPagerPosition:'left',
                 onSliderLoad: function(el) {
                     el.lightGallery({
                         selector: '#imageGallery .lslide'
                     });
-                }
+                }   
+            });  
+  });
+    </script>       
+
+    <?php
+        $id = Session::get('customer_id');
+        if($id != NULL){
+    ?>
+
+    <script>
+        $(document).ready(function () {
+            $('.xac-nhan').click(function(){
+                swal({
+                      title: "Xác nhận đơn hàng?",
+                      text: "Đơn hàng không thể hủy bỏ sau khi nhấn xác nhận, bạn vẫn muốn đặt hàng?",
+                      type: "warning",
+                      showCancelButton: true,
+                      confirmButtonClass: "btn-danger",
+                      confirmButtonText: "Xác nhận đặt hàng!",
+                      cancelButtonText: "Tôi cần suy nghĩ thêm!",
+                      closeOnConfirm: false,
+                      closeOnCancel: false
+                    },
+                    function(isConfirm){
+                        if (isConfirm) {
+                            var shipping_email = $('.shipping_email').val();
+                            var shipping_name = $('.shipping_name').val();
+                            var shipping_address = $('.shipping_address').val();
+                            var shipping_phone = $('.shipping_phone').val();
+                            var shipping_notes = $('.shipping_notes').val();
+                            var shipping_method = $('.payment_select').val();
+                            var order_coupon = $('.order_coupon').val();
+                            var _token = $('input[name="_token"]').val();
+                            $.ajax({
+                                url: '{{ url('/confirm-order') }}',
+                                method: 'POST',
+                                data:{shipping_email:shipping_email,shipping_name:shipping_name,shipping_address:shipping_address,shipping_phone:shipping_phone,shipping_notes:shipping_notes,order_coupon:order_coupon,_token:_token,shipping_method:shipping_method},
+                                success:function(){
+                                    swal("Đặt hàng thành công!", "Đơn hàng của bạn đang trong quá trình xử lý, xin cảm ơn quý khách!.", "success");
+                                }
+
+                            });
+                            window.setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                           
+                          } else {
+                            swal("Tạm dừng", "Nếu chưa chắc chắn đơn hàng,quý khách vui lòng bỏ qua thông báo này", "error");
+                          }
+                      
+                    });
+                
             });
         });
-    </script> -->
 
-    <?php
-    $id = Session::get('customer_id');
-    if ($id != NULL) {
-    ?>
-
-        <script>
-            $(document).ready(function() {
-                $('.xac-nhan').click(function() {
-                    swal({
-                            title: "Xác nhận đơn hàng?",
-                            text: "Đơn hàng không thể hủy bỏ sau khi nhấn xác nhận, bạn vẫn muốn đặt hàng?",
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonClass: "btn-danger",
-                            confirmButtonText: "Xác nhận đặt hàng!",
-                            cancelButtonText: "Tôi cần suy nghĩ thêm!",
-                            closeOnConfirm: false,
-                            closeOnCancel: false
-                        },
-                        function(isConfirm) {
-                            if (isConfirm) {
-                                var shipping_email = $('.shipping_email').val();
-                                var shipping_name = $('.shipping_name').val();
-                                var shipping_address = $('.shipping_address').val();
-                                var shipping_phone = $('.shipping_phone').val();
-                                var shipping_notes = $('.shipping_notes').val();
-                                var shipping_method = $('.payment_select').val();
-                                var order_coupon = $('.order_coupon').val();
-                                var _token = $('input[name="_token"]').val();
-                                $.ajax({
-                                    url: '{{ url(' / confirm - order ') }}',
-                                    method: 'POST',
-                                    data: {
-                                        shipping_email: shipping_email,
-                                        shipping_name: shipping_name,
-                                        shipping_address: shipping_address,
-                                        shipping_phone: shipping_phone,
-                                        shipping_notes: shipping_notes,
-                                        order_coupon: order_coupon,
-                                        _token: _token,
-                                        shipping_method: shipping_method
-                                    },
-                                    success: function() {
-                                        swal("Đặt hàng thành công!", "Đơn hàng của bạn đang trong quá trình xử lý, xin cảm ơn quý khách!.", "success");
-                                    }
-
-                                });
-                                window.setTimeout(function() {
-                                    location.reload();
-                                }, 2000);
-
-                            } else {
-                                swal("Tạm dừng", "Nếu chưa chắc chắn đơn hàng,quý khách vui lòng bỏ qua thông báo này", "error");
-                            }
-
-                        });
-
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $('.add-to-cart').click(function() {
-                    var id = $(this).data('id_product');
-                    var cart_product_id = $('.cart_product_id_' + id).val();
-                    var cart_product_name = $('.cart_product_name_' + id).val();
-                    var cart_product_image = $('.cart_product_image_' + id).val();
-                    var cart_product_qty = $('.cart_product_qty_' + id).val();
-                    var cart_product_price = $('.cart_product_price_' + id).val();
-                    var cart_product_quantity = $('.cart_product_quantity_' + id).val();
-                    var _token = $('input[name="_token"]').val();
-                    if (parseInt(cart_product_quantity) > parseInt(cart_product_qty)) {
-                        alert('Vui lòng đặt nhỏ hơn hoặc bằng số lượng có sẵn trong kho hiện tại: ' + cart_product_qty);
-                    } else {
-                        $.ajax({
-                            url: '{url(" / add - cart - ajax ")}',
-                            method: 'POST',
-                            data: {
-                                cart_product_id: cart_product_id,
-                                cart_product_name: cart_product_name,
-                                cart_product_image: cart_product_image,
-                                cart_product_price: cart_product_price,
-                                cart_product_quantity: cart_product_quantity,
-                                _token: _token,
-                                cart_product_qty: cart_product_qty
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.add-to-cart').click(function(){
+                var id = $(this).data('id_product');
+                var cart_product_id = $('.cart_product_id_' + id).val();
+                var cart_product_name = $('.cart_product_name_' + id).val();
+                var cart_product_image = $('.cart_product_image_' + id).val();
+                var cart_product_qty = $('.cart_product_qty_' + id).val();
+                var cart_product_price = $('.cart_product_price_' + id).val();
+                var cart_product_quantity = $('.cart_product_quantity_' + id).val();
+                var _token = $('input[name="_token"]').val();
+                if(parseInt(cart_product_quantity) > parseInt(cart_product_qty)){
+                    alert('Vui lòng đặt nhỏ hơn hoặc bằng số lượng có sẵn trong kho hiện tại: ' + cart_product_qty); 
+                }else{
+                $.ajax({
+                    url: '{{ url('/add-cart-ajax') }}',
+                    method: 'POST',
+                    data:{cart_product_id:cart_product_id,cart_product_name:cart_product_name,cart_product_image:cart_product_image,cart_product_price:cart_product_price,cart_product_quantity:cart_product_quantity,_token:_token,cart_product_qty:cart_product_qty},
+                    success:function(data){
+                        
+                        swal({
+                                title: "Đã thêm thành công sản phẩm vào giỏ hàng",
+                                text: "Bạn có thể tiếp tục mua hàng hoặc tới giỏ hàng để tiến hành thanh toán",
+                                showCancelButton: true,
+                                cancelButtonText: "Xem tiếp",
+                                confirmButtonClass: "btn-success",
+                                confirmButtonText: "Đi đến giỏ hàng",
+                                closeOnConfirm: false
                             },
-                            success: function(data) {
+                            function() {
+                                window.location.href = "{{url('/show-cart-ajax')}}";
+                            });
 
-                                swal({
-                                        title: "Đã thêm thành công sản phẩm vào giỏ hàng",
-                                        text: "Bạn có thể tiếp tục mua hàng hoặc tới giỏ hàng để tiến hành thanh toán",
-                                        showCancelButton: true,
-                                        cancelButtonText: "Xem tiếp",
-                                        confirmButtonClass: "btn-success",
-                                        confirmButtonText: "Đi đến giỏ hàng",
-                                        closeOnConfirm: false
-                                    },
-                                    function() {
-                                        window.location.href = "{{url('/show-cart-ajax')}}";
-                                    });
+                        }
 
-                            }
-
-                        })
-                    };
-                });
+                    })
+                };
             });
-        </script>
+        });
+    </script>
     <?php
-    } else {
+}else{
     ?>
-        <script>
-            $(document).ready(function() {
-                $('.add-to-cart').click(function() {
-                    alert('Bạn cần phải đăng nhập mới có thể sử dụng tác vụ. Xin cảm ơn!');
-                });
-            })
-        </script>
-    <?php
+    <script>
+        $(document).ready(function () {
+            $('.add-to-cart').click(function(){
+                alert('Bạn cần phải đăng nhập mới có thể sử dụng tác vụ. Xin cảm ơn!');
+            });
+        })
+    </script>
+    <?php 
     }
     ?>
 </body>
-
 </html>
