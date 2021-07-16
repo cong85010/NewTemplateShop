@@ -21,6 +21,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link href="{{asset('public/backend/css/style-responsive.css') }}" rel="stylesheet"/>
 	<!-- font CSS -->
 	<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css?fbclid=IwAR2hW-UVKVzrY8wv5mhLirtIbqHtuWpOsEqiOtaoqftHoN8xJ09cuQJdNV4' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 	<!-- font-awesome icons -->
 	<link rel="stylesheet" href="{{asset('public/backend/css/font.css') }}" type="text/css"/>
@@ -50,32 +51,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
 </div>
 <!--logo end-->
-<div class="top-nav clearfix">
-    <!--search & user info start-->
-    <ul class="nav pull-right top-menu">
-        <!-- user login dropdown start-->
-        <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="{{ asset('public/backend/images/2.png') }}">
-                <span class="username">
-                	<?php 
-                		$name = Session::get('admin_name');
-                		if($name){
-                			echo $name;
-                		}
-                	?>
-                </span>
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu extended logout">
-                <li><a href="{{ URL::to('/profile_admin/'.Session::get('admin_id')) }}"><i class=" fa fa-suitcase"></i>Thông tin/ Chỉnh sửa</a></li>
-                <li><a href="{{ URL::to('/logout') }}"><i class="fa fa-key"></i> Đăng xuất</a></li>
-            </ul>
-        </li>
-        <!-- user login dropdown end -->
-       
-    </ul>
-    <!--search & user info end-->
+<div class="top-nav clearfix text-right">
+	<h4><a style="padding: 10px; background-color: #d9534f; color: white;" href="{{ URL::to('/logout') }}">Đăng xuất</a></h4>
 </div>
 </header>
 <!--header end-->
@@ -85,16 +62,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
+				<div class="sidebar-img flex-center" style="flex-direction: column;">
+					<a href="{{ URL::to('/profile_admin/'.Session::get('admin_id')) }}">
+						<img src="{{ asset('public/backend/images/find_user.png') }}" alt=""/>
+						<div>
+							<h3 class="text-danger text-center">
+							<?php 
+							$name = Session::get('admin_name');
+							if($name){
+								echo $name;
+							}
+						?></h3>
+						</div>
+					</a>
+				</div>
                 <li>
                     <a class="active" href="{{ URL::to('admin-dashboard') }}">
-                        <i class="fa fa-dashboard"></i>
+                        <i class="fa fa-dashboard fa-3x"></i>
                         <span>Tổng Quan</span>
                     </a>
                 </li>  
 
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                       <i class="fa fa-desktop" aria-hidden="true"></i>
                         <span>Banner</span>
                     </a>
                     <ul class="sub">
@@ -106,7 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 
 				<li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                        <i class="fa fa-dropbox" aria-hidden="true"></i>
                         <span>Đơn hàng</span>
                     </a>
                     <ul class="sub">
@@ -117,7 +108,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                        <i class="fa fa-tag" aria-hidden="true"></i>
                         <span>Mã giảm giá</span>
                     </a>
                     <ul class="sub">
@@ -129,7 +120,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                       <i class="fas fa-boxes    "></i>
                         <span>Danh mục sản phẩm</span>
                     </a>
                     <ul class="sub">
@@ -139,7 +130,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                      	<i class="fa fa-hand-peace-o" aria-hidden="true"></i>
                         <span>Thương hiệu sản phẩm</span>
                     </a>
                     <ul class="sub">
@@ -149,7 +140,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                        <i class="fa fa-archive" aria-hidden="true"></i>
                         <span>Sản phẩm</span>
                     </a>
                     <ul class="sub">

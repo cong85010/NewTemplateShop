@@ -1,19 +1,82 @@
 @extends('admin_layout')
-@section('admin_content')	  
+@section('admin_content')
 
 <div class="container-fluid">
-	<style type="text/css">
-		p.title_thongke{
-			text-align: center;
-			font-size: 20px;
-			font-weight: bold;
-		}
-	</style>
+
 </div>
 
-<div class="row">
-	<p class="title_thongke">Thống kê doanh số</p>
-
+<div class="row dashboard">
+	<div class="dashboard_hello">
+		<h2>Admin Dashboard</h2>
+		<p>Xin chào
+			<span><?php
+					$name = Session::get('admin_name');
+					if ($name) {
+						echo $name;
+					}
+					?></span> , rất vui khi gặp lại bạn.
+		</p>
+	</div>
+	<div class="row" style="margin: 20px 0;">
+		<p class="title_thongke">Thống kê truy cập</p>
+		<div style="width: 20%;" class="col-md-2 col-sm-6 col-xs-6">
+			<div class="panel panel-back noti-box">
+				<span class="icon-box bg-color-red set-icon">
+					<i class="fa fa-globe" aria-hidden="true"></i>
+				</span>
+				<div class="text-box">
+					<p class="main-text">Hiện tại</p>
+					<p class="text-muted">{{ $visitor_count }}</p>
+				</div>
+			</div>
+		</div>
+		<div style="width: 20%;" class="col-md-2 col-sm-6 col-xs-6">
+			<div class="panel panel-back noti-box">
+				<span class="icon-box bg-color-green set-icon">
+					<i class="fa fa-bars"></i>
+				</span>
+				<div class="text-box">
+					<p class="main-text">Tháng trước</p>
+					<p class="text-muted">{{ $visitors_last_month_count }}</p>
+				</div>
+			</div>
+		</div>
+		<div style="width: 20%;" class="col-md-3 col-sm-6 col-xs-6">
+			<div class="panel panel-back noti-box">
+				<span class="icon-box bg-color-blue set-icon">
+					<i class="fa fa-calendar" aria-hidden="true"></i>
+				</span>
+				<div class="text-box">
+					<p class="main-text">Tháng này</p>
+					<p class="text-muted">{{ $visitors_this_month_count }}</p>
+				</div>
+			</div>
+		</div>
+		<div style="width: 20%;" class="col-md-3 col-sm-6 col-xs-6">
+			<div class="panel panel-back noti-box">
+				<span class="icon-box bg-color-brown set-icon">
+					<i class="fas fa-globe"></i>
+				</span>
+				<div class="text-box">
+					<p class="main-text">Năm nay</p>
+					<p class="text-muted">{{ $visitors_year_count }}</p>
+				</div>
+			</div>
+		</div>
+		<div style="width: 20%;" class="col-md-2 col-sm-6 col-xs-6">
+			<div class="panel panel-back noti-box">
+				<span class="icon-box bg-color-brown set-icon">
+					<i class="fa fa-rocket"></i>
+				</span>
+				<div class="text-box">
+					<p class="main-text">Tất cả</p>
+					<p class="text-muted">{{ $visitor_total }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /. ROW  -->
+	<p style="margin-top: 30px;" class="title_thongke">Thống kê doanh số</p>
 	<form autocomplete="off">
 		@csrf
 		<div class="col-md-2">
@@ -43,65 +106,38 @@
 	<div class="col-md-12">
 		<div id="chart" style="height: 300px;"></div>
 	</div>
+	<div  style="margin-top: 30px;" class="col-md-12">
+		<p class="title_thongke">
+		Top 10 sản phẩm được xem nhiều nhất
+		</p>
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>STT</th>
+						<th>Tên sản phẩm</th>
+						<th>Số lượng</th>
+						<th>Xem chi tiết</th>
+					</tr>
+				</thead>
+				<tbody class="table_thongke">
+				@php
+				$i = 0;
+				@endphp
+				@foreach($product_views as $key => $pro)
+				@php
+					$i++;
+				@endphp
+					<tr>
+						<td>{{ $i }}</td>
+						<td style="font-weight: bold;">{{ $pro->product_name }}</td>
+						<td>{{ $pro->product_views }}</td>
+						<td><a target="blank" href="{{ url('/chi-tiet-san-pham/'.$pro->product_id) }}">Xem chi tiết</a></td>
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
-
-<div class="row">
-	<style type="text/css" media="screen">
-		table.table.table-bordered.table-dark{
-			background: #32383e;
-		}
-		table.table.table-bordered.table-dark tr th{
-			color: #fff;
-		}
-	</style>
-	<p class="title_thongke">Thống kê truy cập</p>
-	<table class="table table-bordered table-dark">
-		<thead>
-			<tr>
-				<th scope="col">Đang online</th>
-				<th scope="col">Tổng tháng trước</th>
-				<th scope="col">Tổng tháng này</th>
-				<th scope="col">Tổng một năm</th>
-				<th scope="col">Tổng truy cập</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				{{-- <td>20</td>
-				<td>100</td>
-				<td>50</td>
-				<td>2000</td>
-				<td>10000</td> --}}
-				<td>{{ $visitor_count }}</td>
-				<td>{{ $visitors_last_month_count }}</td>
-				<td>{{ $visitors_this_month_count }}</td>
-				<td>{{ $visitors_year_count }}</td>
-				<td>{{ $visitor_total }}</td>
-			</tr>
-		</tbody>		
-	</table>
-</div>
-
-<div class="row" style="margin-left:355px;">
-	<style type="text/css" media="screen">
-		ol.list_views{
-			color:#fff;
-			margin: 10px 0;
-		}
-		ol.list_views a{
-			color: orange;
-			font-weight: 400;
-		}
-	</style>
-	<h3>Top 10 sản phẩm được xem nhiều nhất</h3>
-
-	<ol class="list_views">
-		@foreach($product_views as $key => $pro)
-			<li>
-				<a target="blank" href="{{ url('/chi-tiet-san-pham/'.$pro->product_id) }}">{{ $pro->product_name }} | <span style="color: black">{{ $pro->product_views }}</span></a>
-			</li>
-		@endforeach
-	</ol>
-</div>
-
 @endsection

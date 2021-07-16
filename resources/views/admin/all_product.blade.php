@@ -1,9 +1,11 @@
 @extends('admin_layout')
 @section('admin_content')
 <div class="table-agile-info">
-  <div class="panel panel-default">
+  <div class="panel panel-default dashboard">
     <div class="panel-heading">
-      Danh sách sản phẩm
+     <p class="title_thongke">
+     Danh sách sản phẩm
+     </p>
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
@@ -22,7 +24,7 @@
         <div class="input-group">
           <form action="{{ URL::to('/search-pro-admin') }}" method="post">
             {{ csrf_field() }}
-            <input type="text" name="keywords"  placeholder="Search">
+            <input type="text" name="keywords" class="form-control"  placeholder="Search">
             <span class="input-group-btn">
               <button class="btn btn-sm btn-default" type="submit">Tìm kiếm</button>
             </span>
@@ -48,28 +50,22 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
-            <th>Tên sản phẩm</th>
-            <th>Hình ảnh sản phẩm</th>
+            <th  style="width: 20%;">Tên sản phẩm</th>
+            <th>Hình ảnh</th>
             <th>Hình ảnh mô tả</th>
-            <th>Giá sản phẩm</th>
+            <th>Giá bán</th>
             <th>Giá nhập</th>
-            <th>Danh mục sản phẩm</th>
+            <th>Danh mục</th>
             <th>Thương hiệu</th>
             <th>Số lượng</th>
             <th>Trạng thái</th>
-            <th style="width:30px;">Sửa/xóa</th>
+            <th>Sửa/xóa</th>
           </tr>
         </thead>
         <tbody>
           @foreach($all_product as $key => $product)
           <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{ $product->product_name }}</td>
+            <td style="width: 20%;">{{ $product->product_name }}</td>
             <td><img src="public/uploads/product/{{ $product->product_image }}" width="100" height="100"></td>
             <td><a href="{{ 'add-gallery/'.$product->product_id }}">Thêm/sửa hình ảnh mô tả</a></td>
             <td>{{ number_format($product->product_price) }}</td>
@@ -91,7 +87,7 @@
                 <a href="{{ URL::to('/unactive-product/'.$product->product_id) }}" title="">Hiển thị</a>
               @endif
             </span></td>
-            <td>
+            <td class="flex-between">
               <a href="{{ URL::to('edit-product/'.$product->product_id) }}" class="active" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
               <a onclick="return confirm('Bạn có chắc chắn muốn xóa mục này?')" href="{{ URL::to('delete-product/'.$product->product_id) }}" title="">

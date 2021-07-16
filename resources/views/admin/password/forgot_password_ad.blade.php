@@ -27,8 +27,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('public/backend/js/jquery2.0.3.min.js') }}"></script>
 </head>
 <body>
-<div class="log-w3">
-<div class="w3layouts-main">
+<div class="log-w3  background-main">
+<div style="background-color: rgba(255,255,255,0.2);"  id="login_el" class="w3layouts-main">
 	<h2>Quên mật khẩu - Admin<br> E-Shopper</h2>
 	<?php
 		$mess = Session::get('mess');	

@@ -3,9 +3,10 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Danh sách mã giảm giá<br>
-      <a style="margin-left: 849px" href="{{ URL::to('insert-coupon') }}" title="">Thêm mã giảm</a>
-    </div><br><br>
+      <p class="title_thongke">
+      Danh sách mã giảm giá
+      </p>
+    </div
     <div class="table-responsive">
       <?php
         $mess = Session::get('mess');
@@ -57,10 +58,9 @@
       </table>
     </div>
         <footer class="panel-footer">
-      <div class="row">
-        
-        <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm"></small>
+      <div class="flex-between">
+        <div class="col-sm-5">
+        <a  href="{{ URL::to('insert-coupon') }}" title="">Thêm mã giảm</a>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">

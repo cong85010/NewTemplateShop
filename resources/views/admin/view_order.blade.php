@@ -22,7 +22,6 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            
             <th>Tên/ ID khách hàng</th>
             <th>Số điện thoại</th>
             <th>Email</th>
@@ -41,9 +40,7 @@
       </table>
     </div>
   </div>
-</div>
-<br><br>
-<div class="table-agile-info">
+  <div style="min-height: auto; padding: 0;" class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
       @foreach($order_detail as $key => $tt1)
@@ -96,8 +93,7 @@
     </div>
   </div>
 </div>
-<br><br>
-<div class="table-agile-info">
+<div style="height: auto; padding: 0;" class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
       @foreach($order_detail as $key => $tt1)
@@ -229,5 +225,6 @@
     </div>
    
   </div>
+</div>
 </div>
 @endsection

@@ -1,9 +1,11 @@
 @extends('admin_layout')
 @section('admin_content')
 <div class="table-agile-info">
-  <div class="panel panel-default">
+  <div class="panel panel-default dashboard">
     <div class="panel-heading">
+      <p class="title_thongke">
       Liệt kê đơn hàng
+      </p>
     </div>
     <div class="row w3-res-tb">
       
@@ -48,7 +50,7 @@
             </td>
             <td>{{ $ord->created_at }}</td>
             
-            <td>
+            <td class="flex-between">
               <a href="{{ URL::to('view-order/'.$ord->order_code) }}" class="active" ui-toggle-class="">
                 <i class="fa fa-eye text-success text-active"></i></a>
               <a onclick="return confirm('Bạn có chắc chắn muốn xóa mục này?')" href="{{ URL::to('delete-order/'.$ord->order_code) }}" title="">

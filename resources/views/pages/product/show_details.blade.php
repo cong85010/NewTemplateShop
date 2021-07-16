@@ -79,13 +79,13 @@
 
 
 				<div class="category-tab shop-details-tab style-11"><!--category-tab-->
-						<div class="col-sm-6" style="border-right: 1px solid #cfcfcf;">
-							<h4 style="font-size: 20px;">Thông tin thương hiệu</h4>
-							<p style="font-size: 15px;">{!! $value->product_content !!}</p>
-						</div>
-						<div class="col-sm-6">
+					<div class="col-sm-6">
 							<h4 style="font-size: 20px;">Đánh giá</h4>
 							<p style="line-height: 30px;font-size: 15px;">{!! $value->brand_desc !!}</p>
+						</div>		
+					<div class="col-sm-6" style="border-right: 1px solid #cfcfcf;">
+							<h4 style="font-size: 20px;">Thông tin thương hiệu</h4>
+							<p style="font-size: 15px;">{!! $value->product_content !!}</p>
 						</div>
 				</div><!--/category-tab-->
 

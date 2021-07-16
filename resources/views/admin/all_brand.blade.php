@@ -1,9 +1,11 @@
 @extends('admin_layout')
 @section('admin_content')
 <div class="table-agile-info">
-  <div class="panel panel-default">
+  <div class="panel panel-default dashboard">
     <div class="panel-heading">
-      Thương hiệu sản phẩm
+      <p class="title_thongke">
+        Thương hiệu sản phẩm
+      </p>
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
@@ -48,7 +50,7 @@
             </th>
             <th>Tên thương hiệu</th>
             <th>Trạng thái</th>
-            <th style="width:30px;"></th>
+            <th class="flex-between"><span>Bổ sung</span><span>Xóa</span></th>
           </tr>
         </thead>
         <tbody>
@@ -77,7 +79,7 @@
                 <a href="{{ URL::to('/unactive-brand/'.$brand->brand_id) }}" title="">Hiển thị</a>
               @endif
             </span></td>
-            <td>
+            <td class="flex-between">
               <a href="{{ URL::to('edit-brand/'.$brand->brand_id) }}" class="active" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
               <a onclick="return confirm('Bạn có chắc chắn muốn xóa mục này?')" href="{{ URL::to('delete-brand/'.$brand->brand_id) }}" title="">

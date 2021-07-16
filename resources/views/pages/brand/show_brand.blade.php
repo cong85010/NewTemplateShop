@@ -7,7 +7,7 @@
                             <h2 class="title text-center">{{ ($name_by_id->brand_name) }}</h2>
                         @endforeach
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="margin-left: 20px;">
                                 <label for="amount">Sắp xếp theo</label>
                                 <form>
                                     @csrf
